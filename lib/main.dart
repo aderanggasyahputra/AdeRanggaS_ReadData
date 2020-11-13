@@ -89,7 +89,7 @@ class MhssList extends StatelessWidget {
 Widget viewData(var data,int index)
 {
 return Container(
-    width: 200,
+    width: 50,
     child: Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
