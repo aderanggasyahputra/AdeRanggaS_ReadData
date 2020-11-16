@@ -80,7 +80,7 @@ class MyHomePage extends StatelessWidget {
 }
 
 class MhssList extends StatelessWidget {
-  final List<nama_guru> MhsData;
+  final List<namadosen> MhsData;
 
   MhssList({Key key, this.MhsData}) : super(key: key);
 
