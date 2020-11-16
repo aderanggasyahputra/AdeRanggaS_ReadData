@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 Future<List<Mhs>> fetchMhss(http.Client client) async {
   final response =
-      await client.get('https://testflutterade.000webhostapp.com/readDatajson.php');
+      await client.get('https://testflutterku.000webhostapp.com/readDatajson.php');
 
   // Use the compute function to run parseMhss in a separate isolate.
   return compute(parseMhss, response.body);
@@ -21,21 +21,21 @@ List<Mhs> parseMhss(String responseBody) {
 }
 
 class Mhs {
-  final String nim;
-  final String nama;
-  final String kelas;
-  final String kdmatkul;
-  final String email;
+  final String nig;
+  final String nama_guru;
+  final String jejang_akademik;
+  final String pendidikan_terakhir;
+  final String home_base;
 
-  Mhs({this.nim, this.nama, this.kelas, this.kdmatkul, this.email});
+  Mhs({this.nig, this.nama_guru, this.jenjang_akademik, this.pendidikan_terakhir, this.home_base});
 
   factory Mhs.fromJson(Map<String, dynamic> json) {
     return Mhs(
-      nim: json['nim'] as String,
-      nama: json['nama'] as String,
-      kelas: json['kelas'] as String,
-      kdmatkul: json['kdmatkul'] as String,
-      email: json['email'] as String,
+      nim: json['nig'] as String,
+      nama: json['nama_guru'] as String,
+      kelas: json['jenjang_akademik'] as String,
+      kdmatkul: json['pendidikan_terakhir'] as String,
+      email: json['home_base'] as String,
     );
   }
 }
@@ -45,7 +45,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final appTitle = 'Data Mahasiswa';
+    final appTitle = 'UJIAN SMESTER';
 
     return MaterialApp(
       title: appTitle,
@@ -89,7 +89,7 @@ class MhssList extends StatelessWidget {
 Widget viewData(var data,int index)
 {
 return Container(
-    width: 50,
+    width: 200,
     child: Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
