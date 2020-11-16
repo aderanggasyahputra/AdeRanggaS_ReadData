@@ -32,7 +32,7 @@ class namadosen {
   factory namadosen.fromJson(Map<String, dynamic> json) {
     return namadosen(
       nig: json['nig'] as String,
-      nama_: json['nama_guru'] as String,
+      nama_guru: json['nama_guru'] as String,
       jenjang_akademik: json['jenjang_akademik'] as String,
       pendidikan_terakhir: json['pendidikan_terakhir'] as String,
       home_base: json['home_base'] as String,
