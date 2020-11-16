@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<List<Guru>> fetchMhss(http.Client client) async {
+Future<List<Mhs>> fetchMhss(http.Client client) async {
   final response =
       await client.get('https://testflutterku.000webhostapp.com/readDatajson.php');
 
@@ -14,22 +14,23 @@ Future<List<Guru>> fetchMhss(http.Client client) async {
 }
 
 // A function that converts a response body into a List<Mhs>.
-List<Guru> parseMhss(String responseBody) {
+List<Mhs> parseMhss(String responseBody) {
   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
 
-  return parsed.map<Guru>((json) => Guru.fromJson(json)).toList();
+  return parsed.map<Mhs>((json) => Mhs.fromJson(json)).toList();
 }
 
-class Guru {
+class Mhs {
   final String nig;
   final String nama_guru;
-  final String jejang_akademik;
+  final String jenjang_akademik;
   final String pendidikan_terakhir;
   final String home_base;
 
+  Mhs({this.nig, this.nama_guru, this.jenjang_akademik, this.pendidikan_terakhir, this.home_base});
 
-  factory Guru.fromJson(Map<String, dynamic> json) {
-    return Guru(
+  factory Mhs.fromJson(Map<String, dynamic> json) {
+    return Mhs(
       nim: json['nig'] as String,
       nama: json['nama_guru'] as String,
       kelas: json['jenjang_akademik'] as String,
@@ -44,7 +45,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final appTitle = 'UJIAN SMESTER';
+    final appTitle = 'Data Mahasiswa';
 
     return MaterialApp(
       title: appTitle,
@@ -64,13 +65,13 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: FutureBuilder<List<Guru>>(
+      body: FutureBuilder<List<Mhs>>(
         future: fetchMhss(http.Client()),
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
 
           return snapshot.hasData
-              ? MhssList(GuruData: snapshot.data)
+              ? MhssList(MhsData: snapshot.data)
               : Center(child: CircularProgressIndicator());
         },
       ),
@@ -79,9 +80,9 @@ class MyHomePage extends StatelessWidget {
 }
 
 class MhssList extends StatelessWidget {
-  final List<Guru> GuruData;
+  final List<Mhs> MhsData;
 
-  MhssList({Key key, this.GuruData}) : super(key: key);
+  MhssList({Key key, this.MhsData}) : super(key: key);
 
 
 
@@ -145,9 +146,9 @@ return Container(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
       ),
-      itemCount: GuruData.length,
+      itemCount: MhsData.length,
       itemBuilder: (context, index) {
-        return viewData(GuruData,index);
+        return viewData(MhsData,index);
       },
     );
   }
