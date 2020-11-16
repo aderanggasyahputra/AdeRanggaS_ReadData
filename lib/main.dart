@@ -27,7 +27,6 @@ class Guru {
   final String pendidikan_terakhir;
   final String home_base;
 
- Guru({this.nig, this.nama_guru, this.jenjang_akademik, this.pendidikan_terakhir, this.home_base});
 
   factory Guru.fromJson(Map<String, dynamic> json) {
     return Guru(
