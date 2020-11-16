@@ -117,8 +117,8 @@ return Container(
            //leading: Image.network(
              //   "https://elearning.binadarma.ac.id/pluginfile.php/1/theme_lambda/logo/1602057627/ubd_logo.png",
              // ),
-            title: Text(data[index].nidn, style: TextStyle(color: Colors.white)),
-            subtitle: Text(data[index].nama_dosen, style: TextStyle(color: Colors.white)),
+            title: Text(data[index].nig, style: TextStyle(color: Colors.white)),
+            subtitle: Text(data[index].nama_guru, style: TextStyle(color: Colors.white)),
           ),
           ButtonTheme.bar(
             child: ButtonBar(
