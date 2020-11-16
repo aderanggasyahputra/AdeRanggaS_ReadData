@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 Future<List<namadosen>> fetchMhss(http.Client client) async {
   final response =
-      await client.get('https://agungmenditawala.000webhostapp.com/readDatajson.php');
+      await client.get('https://testflutterade.000webhostapp.com/readDatajson.php');
 
   // Use the compute function to run parseMhss in a separate isolate.
   return compute(parseMhss, response.body);
