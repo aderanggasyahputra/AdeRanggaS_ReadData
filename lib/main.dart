@@ -27,7 +27,7 @@ class namadosen {
   final String pendidikan_terakhir;
   final String home_base;
 
-  namadosen({this.nidn, this.nama_dosen, this.jenjang_akademik, this.pendidikan_terakhir, this.home_base});
+  namadosen({this.nig, this.nama_guru, this.jenjang_akademik, this.pendidikan_terakhir, this.home_base});
 
   factory namadosen.fromJson(Map<String, dynamic> json) {
     return namadosen(
